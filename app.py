@@ -3,9 +3,8 @@
 # currently only one request at a time is supported
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template
-import requests
 from werkzeug.utils import secure_filename
-import CoordinateConverter as Cc
+import api.CoordinateConverter as Cc
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'obj', 'fbx', 'json'}

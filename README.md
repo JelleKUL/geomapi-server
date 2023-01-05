@@ -1,5 +1,5 @@
-# geomapi-alignmentserver
-A python flask webserver to align Geomapi sessions
+# geomapi-server
+A webserver implementation of the Geomapi features to use the tools on any device.
 
 ## Geomapi
 
