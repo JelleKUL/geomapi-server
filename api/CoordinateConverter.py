@@ -54,3 +54,6 @@ def ConvertFromJson(coordinateDict, type):
     elif(type == 2):
         lmbCoords = DegToLmb72(coordinateDict["y"],coordinateDict["x"])
         return(lmbCoords[0], lmbCoords[1],coordinateDict["z"])
+
+def helloworld():
+    print("Hello world")
