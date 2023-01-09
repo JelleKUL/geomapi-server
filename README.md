@@ -5,6 +5,10 @@ A webserver implementation of the Geomapi features to use the tools on any devic
 
 This library is based on the Geomapi framework to standardize the management of Geomatic data.
 
+## Documentation
+
+https://jellekul.github.io/geomapi-server/
+
 ## Workflow
 - Send a geomapi.Session & rough global position to the server
 - Return an estimated alignment
