@@ -1,13 +1,14 @@
 # README
-# This webserver will perform the heavy computations for calculating the precise global position of a device according to reference data.
-# currently only one request at a time is supported
+# To start the server in development moder run:
+# flask --app app run --host=0.0.0.0
+
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import api.CoordinateConverter as Cc
 
-UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'obj', 'fbx', 'json'}
+UPLOAD_FOLDER = "/srvgentjkd98p2/K/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions/"
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'obj', 'fbx', 'json', 'ttl'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -19,8 +20,8 @@ dirname = os.path.dirname(__file__)
 
 # The main page to show stuff 
 @app.route("/")
-def hello_world():
-    return "<p>Hello, you!</p>"
+def index():
+    return render_template('index.html')
 
 # Create a sub selection of the data with given global coordinates
 @app.route("/geolocation", methods=['GET', 'POST'])
@@ -54,7 +55,7 @@ def add_session():
         
         # check if the post request has a valid session name
         if 'session' not in request.form:
-            print('No sesison name attached')
+            print('No session name attached')
             return redirect(request.url)
         
         sessionName = request.form.get("session")
