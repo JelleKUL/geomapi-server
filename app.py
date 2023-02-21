@@ -6,9 +6,12 @@ import os
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import api.CoordinateConverter as Cc
-
-UPLOAD_FOLDER = "/srvgentjkd98p2/K/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions/"
+import requests
+# /srvgentjkd98p2/K/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions/
+UPLOAD_FOLDER = "K:/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions"
+FORWARD_PORT = 'http://127.0.0.1:8000'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'obj', 'fbx', 'json', 'ttl'}
+PROXYMODE = True
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -18,6 +21,13 @@ referencePosition = 0
 errorRadius = 0
 dirname = os.path.dirname(__file__)
 
+def proxy_request(request):
+    print("Forwarding request:" + str(request))
+    if(request.method == 'POST'):
+        return requests.post(FORWARD_PORT + request.path, request.get_json(force = True)).content
+    elif(request.method == 'GET'):
+        return requests.get(FORWARD_PORT + request.path).content
+
 # The main page to show stuff 
 @app.route("/")
 def index():
@@ -26,6 +36,7 @@ def index():
 # Create a sub selection of the data with given global coordinates
 @app.route("/geolocation", methods=['GET', 'POST'])
 def geo_location():
+    if(PROXYMODE): return proxy_request(request)
     global referencePosition, errorRadius
     if request.method == 'POST':
         data = request.get_json(force = True)
@@ -52,6 +63,7 @@ def add_session():
     if request.method == 'POST':
         
         print(request.files)
+        print(request.form)
         
         # check if the post request has a valid session name
         if 'session' not in request.form:
@@ -87,6 +99,7 @@ def add_session():
                 if allowed_file(file.filename):
                     filename = secure_filename(file.filename)
                     file.save(os.path.join(savePath, filename))
+            print("Upload Success")
             return "<h2>Succes!</h2>"
     else:
         return render_template('add-session.html')
