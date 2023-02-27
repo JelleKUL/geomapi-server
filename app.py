@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 import api.CoordinateConverter as Cc
 import requests
 # /srvgentjkd98p2/K/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions/
+RASPBERRYPI_PATH = "/home/geomapiserver/drives/geomaticsprojects/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions"
 UPLOAD_FOLDER = "K:/Projects/2025-03 Project FWO SB Jelle/7.Data/UploadedSessions"
 FORWARD_PORT = 'http://127.0.0.1:8000'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'obj', 'fbx', 'json', 'ttl'}
