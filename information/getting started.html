@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; geomapi-server 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="api.CoordinateConverter" href="../api/api.CoordinateConverter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            geomapi-server
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">api</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-your-first-node">Creating your first node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#without-a-graph">Without a Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-graph">With Graph</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#node-types">Node Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-sessions">Working with Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">geomapi-server</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/information/getting started.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<p>Getting you started with Geomapi</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>Use the package manager <a class="reference external" href="https://pypi.org/project/geomapi">pip</a> to install geomapi.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>geomapi
+</pre></div>
+</div>
+</section>
+<section id="creating-your-first-node">
+<h2>Creating your first node<a class="headerlink" href="#creating-your-first-node" title="Permalink to this heading"></a></h2>
+<p>All Node types inherit the Base Node so they can be created in a very similar way.
+A Node Can be initialised using a number of different parameters</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geomapi.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="n">newNode</span> <span class="o">=</span> <span class="n">Node</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="without-a-graph">
+<h3>Without a Graph<a class="headerlink" href="#without-a-graph" title="Permalink to this heading"></a></h3>
+<p>If no Graph or -path is provided, You can create an empty node of any type with a (random) subject ID and no metadata.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">newNode</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;myNode&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="with-graph">
+<h3>With Graph<a class="headerlink" href="#with-graph" title="Permalink to this heading"></a></h3>
+<p>You can create a Node using a Graph or -Path, this will parse all the variables inside the Graph. If a subject is provided, it will use that specific subject for the Graph.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">newNode</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">graphPath</span> <span class="o">=</span> <span class="s2">&quot;http://www.w3.org/People/Berners-Lee/card&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="node-types">
+<h2>Node Types<a class="headerlink" href="#node-types" title="Permalink to this heading"></a></h2>
+<p>Currently, the API supports 6 Specialised Nodes:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">ImageNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">GeometryNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">PointcloudNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">MeshNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">BIMNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">LinesetNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">OrthoNode</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">geomapi.nodes</span> <span class="kn">import</span> <span class="n">SessionNode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Each Node Can be created just like a regular node, but it has extra inputs to assing variables.
+Check out the tutorial section for info about each specific node.</p>
+</section>
+<section id="working-with-sessions">
+<h2>Working with Sessions<a class="headerlink" href="#working-with-sessions" title="Permalink to this heading"></a></h2>
+<p>Since each node Only points to 1 resource, we use Sessions to group them.
+A Session is a collection of Resources that are taken in a single recording session. This means that all they are all in the same coordinate system and are documenting the same information.
+Check out the tutorial section about SessionNodes to get started.</p>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading"></a></h2>
+<p>Check out the testcases to learn about practical uses for the package</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api/api.CoordinateConverter.html" class="btn btn-neutral float-left" title="api.CoordinateConverter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vermandere.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
